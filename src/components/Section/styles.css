@@ -1,7 +1,6 @@
 .section {
   width: 100vw;
   height: 100vh;
-  background-image: url('../../images/model-3.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -19,11 +18,25 @@
 .section__text > h1 {
   font-size: 45px;
   font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.section__text > p {
+  font-size: 15px;
+  font-weight: 200;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.section__text > p:hover {
+  cursor: pointer;
+  text-decoration: underline 2px;
 }
 
 .btn__group {
   display: flex;
   margin-bottom: 25px;
+  margin: auto;
 }
 
 @media screen and (max-width: 690px) {
