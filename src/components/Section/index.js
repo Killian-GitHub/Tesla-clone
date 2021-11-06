@@ -1,9 +1,12 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import styled from 'styled-components'
 import './styles.css'
+import Fade from 'react-reveal/Fade'
 
 function Section({
   title,
+  link,
   description,
   btnLeftText,
   btnRightText,
@@ -15,23 +18,28 @@ function Section({
 
   return (
     <ProductContainer className="section" backgroundImg={background}>
-      <div className="section__text">
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </div>
-      <div className="section__btn">
-        <div className="btn__group">
-          <button className="btn__left">{btnLeftText}</button>
-          {btnRightText && (
-            <button className="btn__right">{btnRightText}</button>
-          )}
+      <Fade>
+        <div className="section__text">
+          <h1>{title}</h1>
+          <a href="/">{link}</a>
+          <p>{description}</p>
         </div>
-        <img
-          src="/images/down-arrow.svg"
-          className="btn__arrow"
-          alt="Animate arrow"
-        />
-      </div>
+      </Fade>
+      <Fade>
+        <div className="section__btn">
+          <div className="btn__group">
+            <button className="btn__left">{btnLeftText}</button>
+            {btnRightText && (
+              <button className="btn__right">{btnRightText}</button>
+            )}
+          </div>
+          <img
+            src="/images/down-arrow.svg"
+            className="btn__arrow"
+            alt="Animate arrow"
+          />
+        </div>
+      </Fade>
     </ProductContainer>
   )
 }

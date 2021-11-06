@@ -6,7 +6,7 @@ function Home() {
     <div className="Home">
       <Section
         title="Model 3"
-        description="Réservez un essai sans contact"
+        link="Réservez un essai sans contact"
         background="../../images/model-3.jpg"
         btnLeftText="Configuration personnalisée"
         btnRightText="Véhicules disponibles"
