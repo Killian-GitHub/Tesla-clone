@@ -1,49 +1,99 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { useState } from 'react'
+import styled from 'styled-components'
 import './styles.css'
+import CloseIcon from '@mui/icons-material/Close'
+import { selectCars } from '../../features/cars/carSlice'
+import { useSelector } from 'react-redux'
 
-function index() {
+const Menu = styled.ul`
+  transform: ${(props) => (props.show ? 'translateX(0)' : 'translateX(100%)')};
+`
+
+function Header() {
+  const [showMenu, setShowMenu] = useState(false)
+  const cars = useSelector(selectCars)
+
   return (
     <div className="header">
       <a href="/">
         <img src="/images/logo.svg" alt="Tesla logo" />
       </a>
-      <div className="header__menu">
-        <p>
-          <a href="/">Model S</a>
-        </p>
-        <p>
-          <a href="/">Model 3</a>
-        </p>
-        <p>
-          <a href="/">Model X</a>
-        </p>
-        <p>
-          <a href="/">Model Y</a>
-        </p>
-        <p>
-          <a href="/">Powerwall</a>
-        </p>
-        <p>
-          <a href="/">Recharge</a>
-        </p>
-      </div>
-      <div className="header__nav">
-        <p>
+      <ul className="header__product">
+        {cars &&
+          cars.map((car, index) => (
+            <li key={index}>
+              <a href="/">{car}</a>
+            </li>
+          ))}
+      </ul>
+      <ul className="header__nav">
+        <li>
           <a href="/">Assistance</a>
-        </p>
-        <p>
+        </li>
+        <li>
           <a href="/">Shop</a>
-        </p>
-        <p>
+        </li>
+        <li>
           <a href="/">Compte</a>
-        </p>
-        <p>
-          <a href="/">Menu</a>
-        </p>
-      </div>
+        </li>
+        <li onClick={() => setShowMenu(true)}>Menu</li>
+      </ul>
+      <Menu show={showMenu} className="header__menu">
+        <div className="menu__icon">
+          <CloseIcon onClick={() => setShowMenu(false)} />
+        </div>
+        {cars &&
+          cars.map((car, index) => (
+            <li key={index}>
+              <a href="/">{car}</a>
+            </li>
+          ))}
+        <li>
+          <a href="/">Véhicules Disponibles</a>
+        </li>
+        <li>
+          <a href="/">Véhicules D'occasion</a>
+        </li>
+        <li>
+          <a href="/">Reprise</a>
+        </li>
+        <li>
+          <a href="/">Essais</a>
+        </li>
+        <li>
+          <a href="/">Flottes & Entreprises</a>
+        </li>
+        <li>
+          <a href="/">Cybertruck</a>
+        </li>
+        <li>
+          <a href="/">Roadster</a>
+        </li>
+        <li>
+          <a href="/">Électricité pour les professionnels</a>
+        </li>
+        <li>
+          <a href="/">Industries</a>
+        </li>
+        <li>
+          <a href="/">Énergie</a>
+        </li>
+        <li>
+          <a href="/">Nous trouver</a>
+        </li>
+        <li>
+          <a href="/">Événements</a>
+        </li>
+        <li>
+          <a href="/">Assistance</a>
+        </li>
+        <li>
+          <a href="/">Relations investisseurs</a>
+        </li>
+      </Menu>
     </div>
   )
 }
 
-export default index
+export default Header
