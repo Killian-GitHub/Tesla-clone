@@ -4,6 +4,10 @@ import styled from 'styled-components'
 import './styles.css'
 import Fade from 'react-reveal/Fade'
 
+const ProductContainer = styled.div`
+  background-image: ${(props) => `url("/images/${props.backgroundImg}")`};
+`
+
 function Section({
   title,
   link,
@@ -12,10 +16,6 @@ function Section({
   btnRightText,
   background,
 }) {
-  const ProductContainer = styled.div`
-    background-image: ${(props) => `url("/images/${props.backgroundImg}")`};
-  `
-
   return (
     <ProductContainer className="section" backgroundImg={background}>
       <Fade>
